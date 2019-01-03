@@ -1,17 +1,17 @@
 package holder
 
 type Nonogram struct {
-	field        Field
-	leftGroup  Group
-	rightGroup Group
+	Field   Field
+	LeftBox Box
+	TopBox  Box
 }
 
 type Field struct {
-	items [][] Item
+	Items [][] Item
 }
 
-type Group struct {
-	numbers [][] int
+type Box struct {
+	Numbers [][] int
 }
 
 const StateUnknown int = -1
@@ -19,5 +19,5 @@ const StateBlack int = 1
 const StateWhite int = 0
 
 type Item struct {
-	state int
+	State int
 }
