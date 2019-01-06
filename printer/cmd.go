@@ -8,23 +8,23 @@ import (
 func SimpleCmdPrint(nonogram holder.Nonogram) {
 
 	fmt.Println("Top box")
-	simpleCmdBoxPrint(nonogram.TopBox)
+	simpleCmdBoxPrint(nonogram.GetTopBox())
 
 	fmt.Println("Left box")
-	simpleCmdBoxPrint(nonogram.LeftBox)
+	simpleCmdBoxPrint(nonogram.GetLeftBox())
 
-	fmt.Println("Field")
-	simpleCmdFieldPrint(nonogram.Field)
+	fmt.Println("field")
+	simpleCmdFieldPrint(nonogram.GetField())
 }
 
 func simpleCmdBoxPrint(box holder.Box) {
 	fmt.Println("┏")
 
-	for i := 0; i < len(box.Numbers); i++ {
+	for i := 0; i < len(box.GetNumbers()); i++ {
 		fmt.Print("┃")
 
-		for j := 0; j < len(box.Numbers[i]); j++ {
-			fmt.Print(box.Numbers[i][j], ' ')
+		for j := 0; j < len(box.GetNumbersLine(i)); j++ {
+			fmt.Print(box.GetNumbersLine(i)[j], " ")
 		}
 
 		fmt.Println()

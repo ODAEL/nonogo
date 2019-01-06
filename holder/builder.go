@@ -14,11 +14,17 @@ func BuildEmptyField(width, height int) (field Field) {
 	return
 }
 
-func BuildEmptyNonogram(width, height int) (nonogram Nonogram) {
-	field := BuildEmptyField(width, height)
-	leftBox := Box{make([][]int, height)}
-	topBox := Box{make([][]int, width)}
+func BuildEmptyNonogram(width, height int) Nonogram {
+	leftBoxNumbers := make([][]int, height)
+	topBoxNumbers := make([][]int, width)
 
-	nonogram = Nonogram{field, leftBox, topBox}
-	return
+	return BuildNonogram(width, height, leftBoxNumbers, topBoxNumbers)
+}
+
+func BuildNonogram(width, height int, leftBoxNumbers, topBoxNumbrs [][] int) Nonogram {
+	field := BuildEmptyField(width, height)
+	leftBox := Box{leftBoxNumbers}
+	topBox := Box{topBoxNumbrs}
+
+	return Nonogram{field, leftBox, topBox}
 }

@@ -1,7 +1,7 @@
 package main
 
-import "nonogram-solver/script"
+import "nonogram-solver/example"
 
 func main() {
-	script.EmptyNonogramPrintExample()
+	example.SimpleFulfilledNonogram()
 }
