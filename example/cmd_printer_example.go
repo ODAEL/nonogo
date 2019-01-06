@@ -12,14 +12,24 @@ func EmptyNonogramPrint() {
 }
 
 func SimpleFulfilledNonogram() {
-	boxesNumbers := make([][] int, 2)
-	boxesNumbers[0] = make([] int, 1)
-	boxesNumbers[1] = make([] int, 1)
 
-	boxesNumbers[0][0] = 2
-	boxesNumbers[1][0] = 2
+	topNumbers := [][]int{
+		[]int{3, 3},
+		[]int{},
+	}
 
-	myNonogram := holder.BuildNonogram(2, 2, boxesNumbers, boxesNumbers)
+	leftNumbers := [][]int{
+		[]int{1},
+		[]int{1},
+		[]int{1},
+		[]int{},
+		[]int{},
+		[]int{1},
+		[]int{1},
+		[]int{1},
+	}
+
+	myNonogram := holder.BuildNonogram(2, 8, leftNumbers, topNumbers)
 	solver.Solve(&myNonogram)
 	printer.SimpleCmdPrint(myNonogram)
 }

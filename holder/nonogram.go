@@ -86,6 +86,6 @@ func (nonogram *Nonogram) GetVerticalLine(index int) ([] *Item, []int) {
 		line[i] = &nonogram.field.Items[i][index]
 	}
 
-	numbers := nonogram.leftBox.GetNumbersLine(index)
+	numbers := nonogram.topBox.GetNumbersLine(index)
 	return line, numbers
 }

@@ -8,7 +8,11 @@ func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
 	}
 
 	if len(numbers) > 1 {
-		return
+		firstBarLength := numbers[0]
+		lastBarLength := numbers[len(numbers) - 1]
+
+		ruleSimpleBoxes(line[firstBarLength + 1:], numbers[1:])
+		ruleSimpleBoxes(line[:len(line) - lastBarLength - 1], numbers[:len(numbers) - 1])
 	}
 
 	// len(numbers) == 1
