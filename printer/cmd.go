@@ -58,7 +58,7 @@ func simpleCmdFieldPrint(field holder.Field) {
 func cmdItemPrint(item holder.Item) {
 	var c string
 
-	switch item.State {
+	switch item.GetState() {
 	case holder.StateBlack:
 		c = "██"
 	case holder.StateUnknown:

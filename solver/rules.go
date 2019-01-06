@@ -3,6 +3,8 @@ package solver
 import "nonogram-solver/holder"
 
 func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
+	line = trimWhite(line)
+
 	if len(numbers) == 0 {
 		return
 	}
@@ -21,6 +23,16 @@ func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
 
 	// If lineLength - barLength > barLength no iterations would made
 	for i := lineLength - barLength; i < barLength; i++ {
-		line[i].State = holder.StateBlack
+		line[i].PaintBlack()
+	}
+}
+
+func rulePaintEmpty(line [] *holder.Item, numbers [] int) {
+	if len(numbers) != 0 {
+		return
+	}
+
+	for i := 0; i < len(line); i++ {
+		line[i].PaintWhite()
 	}
 }

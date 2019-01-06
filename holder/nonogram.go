@@ -67,7 +67,35 @@ const StateBlack int = 1
 const StateWhite int = 0
 
 type Item struct {
-	State int
+	state int
+}
+
+func (item *Item) GetState() int {
+	return item.state
+}
+
+func (item *Item) IsUnknown() bool {
+	return item.state == StateUnknown
+}
+
+func (item *Item) IsBlack() bool {
+	return item.state == StateBlack
+}
+
+func (item *Item) IsWhite() bool {
+	return item.state == StateWhite
+}
+
+func (item *Item) PaintUnknown() {
+	item.state = StateUnknown
+}
+
+func (item *Item) PaintBlack() {
+	item.state = StateBlack
+}
+
+func (item *Item) PaintWhite() {
+	item.state = StateWhite
 }
 
 func (nonogram *Nonogram) GetHorizontalLine(index int) ([] *Item, []int) {
