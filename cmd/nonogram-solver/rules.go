@@ -1,8 +1,6 @@
-package solver
+package main
 
-import "nonogram-solver/holder"
-
-func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
+func ruleSimpleBoxes(line []*Item, numbers []int) {
 	line = trimWhite(line)
 
 	if len(numbers) == 0 {
@@ -11,10 +9,10 @@ func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
 
 	if len(numbers) > 1 {
 		firstBarLength := numbers[0]
-		lastBarLength := numbers[len(numbers) - 1]
+		lastBarLength := numbers[len(numbers)-1]
 
-		ruleSimpleBoxes(line[firstBarLength + 1:], numbers[1:])
-		ruleSimpleBoxes(line[:len(line) - lastBarLength - 1], numbers[:len(numbers) - 1])
+		ruleSimpleBoxes(line[firstBarLength+1:], numbers[1:])
+		ruleSimpleBoxes(line[:len(line)-lastBarLength-1], numbers[:len(numbers)-1])
 	}
 
 	// len(numbers) == 1
@@ -27,7 +25,7 @@ func ruleSimpleBoxes(line [] *holder.Item, numbers [] int) {
 	}
 }
 
-func rulePaintEmpty(line [] *holder.Item, numbers [] int) {
+func rulePaintEmpty(line []*Item, numbers []int) {
 	if len(numbers) != 0 {
 		return
 	}

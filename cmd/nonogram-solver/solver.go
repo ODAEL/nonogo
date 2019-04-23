@@ -1,8 +1,6 @@
-package solver
+package main
 
-import "nonogram-solver/holder"
-
-func Solve(nonogram *holder.Nonogram) {
+func Solve(nonogram *Nonogram) {
 	for i := 0; i < nonogram.GetWidth(); i++ {
 		rulePaintEmpty(nonogram.GetVerticalLine(i))
 		ruleSimpleBoxes(nonogram.GetVerticalLine(i))
