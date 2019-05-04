@@ -1,4 +1,4 @@
-package main
+package holder
 
 const StateUnknown int = 0
 const StateBlack int = 1

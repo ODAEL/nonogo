@@ -1,4 +1,4 @@
-package main
+package holder
 
 type Box struct {
 	numbers [][]int

@@ -1,13 +1,16 @@
-package main
+package solver
 
-import "fmt"
+import (
+	"fmt"
+	"nonogram-solver/holder"
+)
 
 type NonogramPrinter interface {
 	Print()
 }
 
 type CmdNonogramPrinter struct {
-	nonogram Nonogram
+	nonogram holder.Nonogram
 }
 
 func (printer *CmdNonogramPrinter) Print() {
@@ -21,7 +24,7 @@ func (printer *CmdNonogramPrinter) Print() {
 	simpleCmdFieldPrint(printer.nonogram.GetField())
 }
 
-func simpleCmdBoxPrint(box Box) {
+func simpleCmdBoxPrint(box holder.Box) {
 	fmt.Println("┏")
 
 	for i := 0; i < len(box.GetNumbers()); i++ {
@@ -37,37 +40,37 @@ func simpleCmdBoxPrint(box Box) {
 	fmt.Println("┗")
 }
 
-func simpleCmdFieldPrint(field Field) {
+func simpleCmdFieldPrint(field holder.Field) {
 	fmt.Print("┏")
-	for i := 0; i < 2*len(field.items[0]); i++ {
+	for i := 0; i < 2*len(field.Items[0]); i++ {
 		fmt.Print("━")
 	}
 	fmt.Println("┓")
 
-	for i := 0; i < len(field.items); i++ {
+	for i := 0; i < len(field.Items); i++ {
 		fmt.Print("┃")
-		for j := 0; j < len(field.items[i]); j++ {
-			cmdItemPrint(field.items[i][j])
+		for j := 0; j < len(field.Items[i]); j++ {
+			cmdItemPrint(field.Items[i][j])
 		}
 		fmt.Println("┃")
 	}
 
 	fmt.Print("┗")
-	for i := 0; i < 2*len(field.items[0]); i++ {
+	for i := 0; i < 2*len(field.Items[0]); i++ {
 		fmt.Print("━")
 	}
 	fmt.Println("┛")
 }
 
-func cmdItemPrint(item Item) {
+func cmdItemPrint(item holder.Item) {
 	var c string
 
 	switch item.GetState() {
-	case StateBlack:
+	case holder.StateBlack:
 		c = "██"
-	case StateUnknown:
+	case holder.StateUnknown:
 		c = "  "
-	case StateWhite:
+	case holder.StateWhite:
 		c = "❨❩"
 	}
 

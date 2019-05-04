@@ -1,4 +1,4 @@
-package main
+package holder
 
 import (
 	"github.com/stretchr/testify/assert"
@@ -38,7 +38,7 @@ func TestCreateEmptyField(t *testing.T) {
 
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
-			assert.Equal(t, StateUnknown, field.items[i][j].GetState())
+			assert.Equal(t, StateUnknown, field.Items[i][j].GetState())
 		}
 	}
 }
@@ -51,5 +51,5 @@ func TestCreateBySlice(t *testing.T) {
 
 	field := CreateFieldBySlice(slice)
 
-	assert.Equal(t, generateTestItems(), field.items)
+	assert.Equal(t, generateTestItems(), field.Items)
 }
