@@ -42,9 +42,9 @@ func BuildNonogram(width, height int, leftBoxNumbers, topBoxNumbers [][]int) Non
 }
 
 func (nonogram *Nonogram) GetHorizontalLine(index int) ([]*Item, []int) {
-	line := make([]*Item, len(nonogram.field.Items[index]))
-	for i := 0; i < len(nonogram.field.Items[index]); i++ {
-		line[i] = &nonogram.field.Items[index][i]
+	line := make([]*Item, len(nonogram.field.items[index]))
+	for i := 0; i < len(nonogram.field.items[index]); i++ {
+		line[i] = &nonogram.field.items[index][i]
 	}
 
 	numbers := nonogram.leftBox.GetNumbersLine(index)
@@ -52,9 +52,9 @@ func (nonogram *Nonogram) GetHorizontalLine(index int) ([]*Item, []int) {
 }
 
 func (nonogram *Nonogram) GetVerticalLine(index int) ([]*Item, []int) {
-	line := make([]*Item, len(nonogram.field.Items))
-	for i := 0; i < len(nonogram.field.Items); i++ {
-		line[i] = &nonogram.field.Items[i][index]
+	line := make([]*Item, len(nonogram.field.items))
+	for i := 0; i < len(nonogram.field.items); i++ {
+		line[i] = &nonogram.field.items[i][index]
 	}
 
 	numbers := nonogram.topBox.GetNumbersLine(index)

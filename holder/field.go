@@ -1,22 +1,22 @@
 package holder
 
 type Field struct {
-	Items [][]Item
+	items [][]Item
 }
 
 func (field *Field) GetItems() [][]Item {
-	return field.Items
+	return field.items
 }
 
 func (field *Field) GetHeight() int {
-	return len(field.Items)
+	return len(field.items)
 }
 
 func (field *Field) GetWidth() int {
-	if len(field.Items) == 0 {
+	if len(field.items) == 0 {
 		return 0
 	} else {
-		return len(field.Items[0])
+		return len(field.items[0])
 	}
 }
 
