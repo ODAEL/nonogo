@@ -1,29 +1,29 @@
 package holder
 
 type Nonogram struct {
-	field   Field
-	leftBox Box
-	topBox  Box
+	Field   Field
+	LeftBox Box
+	TopBox  Box
 }
 
 func (nonogram *Nonogram) GetField() Field {
-	return nonogram.field
+	return nonogram.Field
 }
 
 func (nonogram *Nonogram) GetLeftBox() Box {
-	return nonogram.leftBox
+	return nonogram.LeftBox
 }
 
 func (nonogram *Nonogram) GetTopBox() Box {
-	return nonogram.topBox
+	return nonogram.TopBox
 }
 
 func (nonogram *Nonogram) GetHeight() int {
-	return nonogram.field.GetHeight()
+	return nonogram.Field.GetHeight()
 }
 
 func (nonogram *Nonogram) GetWidth() int {
-	return nonogram.field.GetWidth()
+	return nonogram.Field.GetWidth()
 }
 
 func BuildEmptyNonogram(width, height int) Nonogram {
@@ -42,21 +42,21 @@ func BuildNonogram(width, height int, leftBoxNumbers, topBoxNumbers [][]int) Non
 }
 
 func (nonogram *Nonogram) GetHorizontalLine(index int) ([]*Item, []int) {
-	line := make([]*Item, len(nonogram.field.items[index]))
-	for i := 0; i < len(nonogram.field.items[index]); i++ {
-		line[i] = &nonogram.field.items[index][i]
+	line := make([]*Item, len(nonogram.Field.Items[index]))
+	for i := 0; i < len(nonogram.Field.Items[index]); i++ {
+		line[i] = &nonogram.Field.Items[index][i]
 	}
 
-	numbers := nonogram.leftBox.GetNumbersLine(index)
+	numbers := nonogram.LeftBox.GetNumbersLine(index)
 	return line, numbers
 }
 
 func (nonogram *Nonogram) GetVerticalLine(index int) ([]*Item, []int) {
-	line := make([]*Item, len(nonogram.field.items))
-	for i := 0; i < len(nonogram.field.items); i++ {
-		line[i] = &nonogram.field.items[i][index]
+	line := make([]*Item, len(nonogram.Field.Items))
+	for i := 0; i < len(nonogram.Field.Items); i++ {
+		line[i] = &nonogram.Field.Items[i][index]
 	}
 
-	numbers := nonogram.topBox.GetNumbersLine(index)
+	numbers := nonogram.TopBox.GetNumbersLine(index)
 	return line, numbers
 }

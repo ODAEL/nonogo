@@ -1,13 +1,17 @@
 package holder
 
 type Box struct {
-	numbers [][]int
+	Numbers [][]int
 }
 
 func (box *Box) GetNumbers() [][]int {
-	return box.numbers
+	return box.Numbers
+}
+
+func (box *Box) SetNumbers(numbers [][]int) {
+	box.Numbers = numbers
 }
 
 func (box *Box) GetNumbersLine(index int) []int {
-	return box.numbers[index]
+	return box.Numbers[index]
 }

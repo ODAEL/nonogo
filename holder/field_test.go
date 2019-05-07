@@ -30,6 +30,17 @@ func TestField_GetWidth(t *testing.T) {
 	assert.Equal(t, 3, field.GetWidth())
 }
 
+func TestField_GetFieldAsSlice(t *testing.T) {
+	field := Field{generateTestItems()}
+
+	want := [][]int{
+		{StateUnknown, StateBlack, StateWhite},
+		{StateBlack, StateWhite, StateUnknown},
+	}
+
+	assert.Equal(t, want, field.GetFieldAsSlice())
+}
+
 func TestCreateEmptyField(t *testing.T) {
 	field := CreateEmptyField(3, 3)
 
@@ -38,7 +49,7 @@ func TestCreateEmptyField(t *testing.T) {
 
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
-			assert.Equal(t, StateUnknown, field.items[i][j].GetState())
+			assert.Equal(t, StateUnknown, field.Items[i][j].GetState())
 		}
 	}
 }
@@ -51,5 +62,5 @@ func TestCreateBySlice(t *testing.T) {
 
 	field := CreateFieldBySlice(slice)
 
-	assert.Equal(t, generateTestItems(), field.items)
+	assert.Equal(t, generateTestItems(), field.Items)
 }

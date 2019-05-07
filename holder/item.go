@@ -5,33 +5,33 @@ const StateBlack int = 1
 const StateWhite int = -1
 
 type Item struct {
-	state int
+	State int
 }
 
 func (item *Item) GetState() int {
-	return item.state
+	return item.State
 }
 
 func (item *Item) IsUnknown() bool {
-	return item.state == StateUnknown
+	return item.State == StateUnknown
 }
 
 func (item *Item) IsBlack() bool {
-	return item.state == StateBlack
+	return item.State == StateBlack
 }
 
 func (item *Item) IsWhite() bool {
-	return item.state == StateWhite
+	return item.State == StateWhite
 }
 
 func (item *Item) PaintUnknown() {
-	item.state = StateUnknown
+	item.State = StateUnknown
 }
 
 func (item *Item) PaintBlack() {
-	item.state = StateBlack
+	item.State = StateBlack
 }
 
 func (item *Item) PaintWhite() {
-	item.state = StateWhite
+	item.State = StateWhite
 }

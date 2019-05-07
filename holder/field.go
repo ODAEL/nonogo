@@ -1,23 +1,40 @@
 package holder
 
 type Field struct {
-	items [][]Item
+	Items [][]Item
 }
 
 func (field *Field) GetItems() [][]Item {
-	return field.items
+	return field.Items
 }
 
 func (field *Field) GetHeight() int {
-	return len(field.items)
+	return len(field.Items)
 }
 
 func (field *Field) GetWidth() int {
-	if len(field.items) == 0 {
+	if len(field.Items) == 0 {
 		return 0
 	} else {
-		return len(field.items[0])
+		return len(field.Items[0])
 	}
+}
+
+func (field *Field) GetFieldAsSlice() [][]int {
+	var slice [][]int
+
+	height := field.GetHeight()
+	width := field.GetWidth()
+
+	for i := 0; i < height; i++ {
+		var row []int
+		for j := 0; j < width; j++ {
+			row = append(row, field.Items[i][j].GetState())
+		}
+		slice = append(slice, row)
+	}
+
+	return slice
 }
 
 func CreateEmptyField(width, height int) Field {
