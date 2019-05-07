@@ -14,19 +14,19 @@ type CmdNonogramPrinter struct {
 
 func (printer *CmdNonogramPrinter) Print() {
 	fmt.Println("Top box")
-	simpleCmdBoxPrint(printer.nonogram.GetTopBox())
+	simpleCmdBoxPrint(printer.nonogram.TopBox)
 
 	fmt.Println("Left box")
-	simpleCmdBoxPrint(printer.nonogram.GetLeftBox())
+	simpleCmdBoxPrint(printer.nonogram.LeftBox)
 
 	fmt.Println("Field")
-	simpleCmdFieldPrint(printer.nonogram.GetField())
+	simpleCmdFieldPrint(printer.nonogram.Field)
 }
 
 func simpleCmdBoxPrint(box Box) {
 	fmt.Println("┏")
 
-	for i := 0; i < len(box.GetNumbers()); i++ {
+	for i := 0; i < len(box.Numbers); i++ {
 		fmt.Print("┃")
 
 		for j := 0; j < len(box.GetNumbersLine(i)); j++ {
@@ -44,21 +44,21 @@ func simpleCmdBoxPrint(box Box) {
 
 func simpleCmdFieldPrint(field Field) {
 	fmt.Print("┏")
-	for i := 0; i < 2*len(field.GetItems()[0]); i++ {
+	for i := 0; i < 2*len(field.Items[0]); i++ {
 		fmt.Print("━")
 	}
 	fmt.Println("┓")
 
-	for i := 0; i < len(field.GetItems()); i++ {
+	for i := 0; i < len(field.Items); i++ {
 		fmt.Print("┃")
-		for j := 0; j < len(field.GetItems()[i]); j++ {
-			cmdItemPrint(field.GetItems()[i][j])
+		for j := 0; j < len(field.Items[i]); j++ {
+			cmdItemPrint(field.Items[i][j])
 		}
 		fmt.Println("┃")
 	}
 
 	fmt.Print("┗")
-	for i := 0; i < 2*len(field.GetItems()[0]); i++ {
+	for i := 0; i < 2*len(field.Items[0]); i++ {
 		fmt.Print("━")
 	}
 	fmt.Println("┛")
@@ -67,7 +67,7 @@ func simpleCmdFieldPrint(field Field) {
 func cmdItemPrint(item Item) {
 	var c string
 
-	switch item.GetState() {
+	switch item.State {
 	case StateBlack:
 		c = "██"
 	case StateUnknown:

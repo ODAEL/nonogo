@@ -31,24 +31,6 @@ func generateTestTopBox() Box {
 	}}
 }
 
-func TestNonogram_GetField(t *testing.T) {
-	nonogram := generateTestNonogram()
-
-	assert.Equal(t, generateTestField(), nonogram.GetField())
-}
-
-func TestNonogram_GetLeftBox(t *testing.T) {
-	nonogram := generateTestNonogram()
-
-	assert.Equal(t, generateTestLeftBox(), nonogram.GetLeftBox())
-}
-
-func TestNonogram_GetTopBox(t *testing.T) {
-	nonogram := generateTestNonogram()
-
-	assert.Equal(t, generateTestTopBox(), nonogram.GetTopBox())
-}
-
 func TestNonogram_GetHeight(t *testing.T) {
 	nonogram := generateTestNonogram()
 
@@ -66,19 +48,19 @@ func TestBuildEmptyNonogram(t *testing.T) {
 
 	assert.Equal(t, 2, nonogram.GetWidth())
 	assert.Equal(t, 4, nonogram.GetHeight())
-	assert.Equal(t, Box{make([][]int, 4)}, nonogram.GetLeftBox())
-	assert.Equal(t, Box{make([][]int, 2)}, nonogram.GetTopBox())
-	assert.Equal(t, CreateEmptyField(2, 4), nonogram.GetField())
+	assert.Equal(t, Box{make([][]int, 4)}, nonogram.LeftBox)
+	assert.Equal(t, Box{make([][]int, 2)}, nonogram.TopBox)
+	assert.Equal(t, CreateEmptyField(2, 4), nonogram.Field)
 }
 
 func TestBuildNonogram(t *testing.T) {
 	leftBox := generateTestLeftBox();
 	topBox := generateTestTopBox();
-	nonogram := BuildNonogram(3, 2, leftBox.GetNumbers(), topBox.GetNumbers())
+	nonogram := BuildNonogram(3, 2, leftBox.Numbers, topBox.Numbers)
 
 	assert.Equal(t, 3, nonogram.GetWidth())
 	assert.Equal(t, 2, nonogram.GetHeight())
-	assert.Equal(t, generateTestLeftBox(), nonogram.GetLeftBox())
-	assert.Equal(t, generateTestTopBox(), nonogram.GetTopBox())
-	assert.Equal(t, CreateEmptyField(3, 2), nonogram.GetField())
+	assert.Equal(t, generateTestLeftBox(), nonogram.LeftBox)
+	assert.Equal(t, generateTestTopBox(), nonogram.TopBox)
+	assert.Equal(t, CreateEmptyField(3, 2), nonogram.Field)
 }

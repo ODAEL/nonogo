@@ -8,10 +8,6 @@ type Item struct {
 	State int
 }
 
-func (item *Item) GetState() int {
-	return item.State
-}
-
 func (item *Item) IsUnknown() bool {
 	return item.State == StateUnknown
 }

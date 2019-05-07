@@ -19,7 +19,7 @@ func TestSolve(t *testing.T) {
 
 		Solve(&nonogram)
 
-		field := nonogram.GetField()
+		field := nonogram.Field
 
 		assert.Equal(t, want, field.GetFieldAsSlice())
 	})
@@ -43,7 +43,7 @@ func TestSolve(t *testing.T) {
 
 		Solve(&nonogram)
 
-		field = nonogram.GetField()
+		field = nonogram.Field
 
 		assert.Equal(t, want, field.GetFieldAsSlice())
 	})

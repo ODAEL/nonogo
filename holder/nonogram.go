@@ -6,18 +6,6 @@ type Nonogram struct {
 	TopBox  Box
 }
 
-func (nonogram *Nonogram) GetField() Field {
-	return nonogram.Field
-}
-
-func (nonogram *Nonogram) GetLeftBox() Box {
-	return nonogram.LeftBox
-}
-
-func (nonogram *Nonogram) GetTopBox() Box {
-	return nonogram.TopBox
-}
-
 func (nonogram *Nonogram) GetHeight() int {
 	return nonogram.Field.GetHeight()
 }

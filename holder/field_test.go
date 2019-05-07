@@ -12,12 +12,6 @@ func generateTestItems() [][]Item {
 	}
 }
 
-func TestField_GetItems(t *testing.T) {
-	field := Field{generateTestItems()}
-
-	assert.Equal(t, generateTestItems(), field.GetItems())
-}
-
 func TestField_GetHeight(t *testing.T) {
 	field := Field{generateTestItems()}
 
@@ -49,7 +43,7 @@ func TestCreateEmptyField(t *testing.T) {
 
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
-			assert.Equal(t, StateUnknown, field.Items[i][j].GetState())
+			assert.Equal(t, StateUnknown, field.Items[i][j].State)
 		}
 	}
 }

@@ -5,27 +5,6 @@ import (
 	"testing"
 )
 
-func TestItem_GetState(t *testing.T) {
-
-	t.Run("Unknown", func(t *testing.T) {
-		item := Item{StateUnknown}
-
-		assert.Equal(t, StateUnknown, item.GetState())
-	})
-
-	t.Run("Black", func(t *testing.T) {
-		item := Item{StateBlack}
-
-		assert.Equal(t, StateBlack, item.GetState())
-	})
-
-	t.Run("White", func(t *testing.T) {
-		item := Item{StateWhite}
-
-		assert.Equal(t, StateWhite, item.GetState())
-	})
-}
-
 func TestItem_IsUnknown(t *testing.T) {
 
 	t.Run("True", func(t *testing.T) {

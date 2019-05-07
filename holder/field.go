@@ -4,10 +4,6 @@ type Field struct {
 	Items [][]Item
 }
 
-func (field *Field) GetItems() [][]Item {
-	return field.Items
-}
-
 func (field *Field) GetHeight() int {
 	return len(field.Items)
 }
@@ -29,7 +25,7 @@ func (field *Field) GetFieldAsSlice() [][]int {
 	for i := 0; i < height; i++ {
 		var row []int
 		for j := 0; j < width; j++ {
-			row = append(row, field.Items[i][j].GetState())
+			row = append(row, field.Items[i][j].State)
 		}
 		slice = append(slice, row)
 	}

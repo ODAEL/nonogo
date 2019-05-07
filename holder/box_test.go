@@ -12,12 +12,6 @@ func generateTestNumbers() [][]int {
 	}
 }
 
-func TestBox_GetNumbers(t *testing.T) {
-	box := Box{generateTestNumbers()}
-
-	assert.Equal(t, generateTestNumbers(), box.GetNumbers())
-}
-
 func TestBox_GetNumbersLine(t *testing.T) {
 	box := Box{generateTestNumbers()}
 
