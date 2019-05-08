@@ -30,7 +30,7 @@ func ExampleCmdNonogramPrinter_Print() {
 
 	printer := CmdNonogramPrinter{nonogram}
 
-	printer.Print()
+	printer.PrintAll()
 
 	// Output:
 	// Top box

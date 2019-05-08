@@ -9,18 +9,18 @@ type NonogramPrinter interface {
 }
 
 type CmdNonogramPrinter struct {
-	nonogram Nonogram
+	Nonogram Nonogram
 }
 
-func (printer *CmdNonogramPrinter) Print() {
+func (printer *CmdNonogramPrinter) PrintAll() {
 	fmt.Println("Top box")
-	simpleCmdBoxPrint(printer.nonogram.TopBox)
+	simpleCmdBoxPrint(printer.Nonogram.TopBox)
 
 	fmt.Println("Left box")
-	simpleCmdBoxPrint(printer.nonogram.LeftBox)
+	simpleCmdBoxPrint(printer.Nonogram.LeftBox)
 
 	fmt.Println("Field")
-	simpleCmdFieldPrint(printer.nonogram.Field)
+	simpleCmdFieldPrint(printer.Nonogram.Field)
 }
 
 func simpleCmdBoxPrint(box Box) {

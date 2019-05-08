@@ -3,16 +3,45 @@ package solver
 import "nonogram-solver/holder"
 
 func Solve(nonogram *holder.Nonogram) {
+	var wasHorizontalChanged, wasVerticalChanged []bool
+
 	for i := 0; i < nonogram.GetWidth(); i++ {
-		tryLine(nonogram.GetVerticalLine(i))
+		wasVerticalChanged = append(wasVerticalChanged, true)
 	}
 
 	for i := 0; i < nonogram.GetHeight(); i++ {
-		tryLine(nonogram.GetHorizontalLine(i))
+		wasHorizontalChanged = append(wasHorizontalChanged, true)
+	}
+
+	for hasTrue(wasVerticalChanged) || hasTrue(wasHorizontalChanged) {
+		for i := 0; i < nonogram.GetWidth(); i++ {
+			if wasVerticalChanged[i] {
+				line, blocks := nonogram.GetVerticalLine(i)
+				tryLine(line, blocks, &wasHorizontalChanged)
+				wasVerticalChanged[i] = false
+			}
+		}
+
+		for i := 0; i < nonogram.GetHeight(); i++ {
+			if wasHorizontalChanged[i] {
+				line, blocks := nonogram.GetHorizontalLine(i)
+				tryLine(line, blocks, &wasVerticalChanged)
+				wasHorizontalChanged[i] = false
+			}
+		}
 	}
 }
 
-func tryLine(line []*holder.Item, blocks []int) {
+func hasTrue(slice []bool) bool {
+	for i := 0; i < len(slice); i++ {
+		if slice[i] {
+			return true
+		}
+	}
+	return false
+}
+
+func tryLine(line []*holder.Item, blocks []int, wasChanged *[]bool) {
 	// We need a virtual block with size 1 in the start of line
 	// It needed for an auto-recursive try for a first real block
 	var virtualLine []holder.Item
@@ -49,10 +78,12 @@ func tryLine(line []*holder.Item, blocks []int) {
 
 	for i := 0; i < len(canBlack); i++ {
 		switch true {
-		case canWhite[i] && !canBlack[i]:
+		case canWhite[i] && !canBlack[i] && !line[i].IsWhite():
+			(*wasChanged)[i] = true
 			line[i].PaintWhite()
 			break;
-		case canBlack[i] && !canWhite[i]:
+		case canBlack[i] && !canWhite[i] && !line[i].IsBlack():
+			(*wasChanged)[i] = true
 			line[i].PaintBlack()
 			break;
 		case !canBlack[i] && !canWhite[i]:
@@ -68,7 +99,7 @@ func tryBlock(
 	itemIndex, blockIndex int,
 	canBlack, canWhite *[]bool) bool {
 
-	for i := itemIndex; i < blocks[blockIndex]; i++ {
+	for i := itemIndex; i < itemIndex+blocks[blockIndex]; i++ {
 		if line[i].IsWhite() {
 			return false
 		}
@@ -77,7 +108,7 @@ func tryBlock(
 	if blockIndex < len(blocks)-1 {
 		result := false
 
-		for nextItemIndex := itemIndex + blocks[blockIndex] + 1; nextItemIndex < len(line)-blocks[blockIndex+1]+2; nextItemIndex++ {
+		for nextItemIndex := itemIndex + blocks[blockIndex] + 1; nextItemIndex < len(line)-blocks[blockIndex+1]+1; nextItemIndex++ {
 			if line[nextItemIndex-1].IsBlack() {
 				break
 			}
