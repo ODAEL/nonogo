@@ -2,7 +2,7 @@ package solver
 
 import (
 	"github.com/stretchr/testify/assert"
-	"nonogram-solver/holder"
+	"nonogo/holder"
 	"testing"
 )
 

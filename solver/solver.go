@@ -1,6 +1,6 @@
 package solver
 
-import "nonogram-solver/holder"
+import "nonogo/holder"
 
 func Solve(nonogram *holder.Nonogram) {
 	var wasHorizontalChanged, wasVerticalChanged []bool
