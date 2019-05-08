@@ -1,8 +1,8 @@
 package solver
 
 import (
+	"github.com/ODAEL/nonogo/holder"
 	"github.com/stretchr/testify/assert"
-	"nonogo/holder"
 	"testing"
 )
 
