@@ -2,15 +2,15 @@
 
 
 [[projects]]
-  digest = "1:b8a1b3c534bdb420f89c86e3ef29dc3467eafb3b6b7102d070681c51af8a1f58"
+  digest = "1:2afe76d57dd0ac23692e0d89ca0d2717ae5e9f5bb836ba35b96925caea49cbcb"
   name = "github.com/ODAEL/nonogo"
   packages = [
     "holder",
     "solver",
   ]
   pruneopts = "UT"
-  revision = "f5da750c47b3107d072e52ac96be6db7dc896d0e"
-  version = "1.0"
+  revision = "ff0a5d478f9e32a970f7acfcf558b04d8aef8d88"
+  version = "1.0.1"
 
 [[projects]]
   digest = "1:ffe9824d294da03b391f44e1ae8281281b4afc1bdaa9588c9097785e3af10cec"

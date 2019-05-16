@@ -23,6 +23,18 @@ func (printer *CmdNonogramPrinter) PrintAll() {
 	simpleCmdFieldPrint(printer.Nonogram.Field)
 }
 
+func (printer *CmdNonogramPrinter) PrintTopBox() {
+	simpleCmdBoxPrint(printer.Nonogram.TopBox)
+}
+
+func (printer *CmdNonogramPrinter) PrintLeftBox() {
+	simpleCmdBoxPrint(printer.Nonogram.LeftBox)
+}
+
+func (printer *CmdNonogramPrinter) PrintField() {
+	simpleCmdFieldPrint(printer.Nonogram.Field)
+}
+
 func simpleCmdBoxPrint(box Box) {
 	fmt.Println("┏")
 
