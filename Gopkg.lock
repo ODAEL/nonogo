@@ -2,9 +2,12 @@
 
 
 [[projects]]
-  digest = "1:451fe4f267bb783b11da348e718f3faa9835c74d478108893b804dc21e5d3b78"
+  digest = "1:b8a1b3c534bdb420f89c86e3ef29dc3467eafb3b6b7102d070681c51af8a1f58"
   name = "github.com/ODAEL/nonogo"
-  packages = ["holder"]
+  packages = [
+    "holder",
+    "solver",
+  ]
   pruneopts = "UT"
   revision = "f5da750c47b3107d072e52ac96be6db7dc896d0e"
   version = "1.0"
@@ -38,6 +41,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/ODAEL/nonogo/holder",
+    "github.com/ODAEL/nonogo/solver",
     "github.com/stretchr/testify/assert",
   ]
   solver-name = "gps-cdcl"
